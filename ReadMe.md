@@ -37,3 +37,30 @@ git branch -M main
 # Push the changes to the remote repository on the main branch
 git push -u origin main
 ```
+
+# Terraform Cleanup Script
+
+To clean up Terraform-related files and directories, you can use the following script:
+
+```bash
+# Delete .terraform* files and directories
+find . -type d -name '.terraform*' -exec rm -rf {} +
+find . -type f -name '.terraform*' -exec rm -f {} +
+
+# Delete terraform.tfstate* files
+find . -type f -name 'terraform.tfstate*' -exec rm -f {} +
+```
+
+# gitignore
+
+add the following lines to your .gitignore file:
+
+```bash
+# Ignore Terraform folder
+
+.terraform/
+
+# Ignore Terraform state file
+
+terraform.tfstate
+```
