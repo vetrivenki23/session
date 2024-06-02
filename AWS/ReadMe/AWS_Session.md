@@ -22,7 +22,7 @@
 
 #### 9. ENI (Elastic Network Interface)
 
-#### 10. Launch an EC2 Instance via the Console
+#### 10. Hibernate in AWS EC2
 
 ---
 
@@ -163,3 +163,20 @@ IP Range : <https://www.dan.me.uk/ipsubnets?ip=192.168.0.1>
 
 - **Definition**: A virtual network interface that can be attached to an EC2 instance.
 - **Usage**: Provides a flexible, low-cost way to manage network interfaces and IP addresses for EC2 instances. It can include multiple IP addresses, security groups, and a MAC address.
+
+---
+
+### Hibernate in AWS EC2
+
+- **Definition**: Allows you to pause and resume EC2 instances by saving the instance's state (RAM) to disk.
+- **Usage**: Save in-memory state to the root EBS volume when stopped and restore it when started.
+
+**Key Points**:
+
+- **Supported Instances**: Specific instance types (e.g., C3, C4, M3, M4, R3, R4).
+- **Root Volume**: Must be an encrypted EBS volume.
+- **OS**: Supported on certain OS versions (e.g., Amazon Linux, Ubuntu).
+
+**Benefits**:
+
+- **Fast Startup**: Faster resume compared to reboot.
