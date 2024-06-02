@@ -96,9 +96,6 @@ This policy grants read-only access to all objects in the specified S3 bucket.
       - `"arn:aws:s3:::example-bucket"`: The S3 bucket itself.
       - `"arn:aws:s3:::example-bucket/*"`: All objects within the S3 bucket.
 
-```
-
-
 ### AWS Role
 
 - **Entity**: Defines permissions for making AWS requests.
