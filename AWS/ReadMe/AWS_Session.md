@@ -10,4 +10,4 @@
 
 #### 4. Cost Manager - Establish a Zero Budget and Schedule Weekly Reports
 
-## 5. Launch an EC2 Instance via the Console
+#### 5. Launch an EC2 Instance via the Console
