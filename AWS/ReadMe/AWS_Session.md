@@ -134,3 +134,25 @@ This policy grants read-only access to all objects in the specified S3 bucket.
 ---
 
 IP Range : <https://www.dan.me.uk/ipsubnets?ip=192.168.0.1>
+
+---
+
+### EC2 - AMI (Amazon Machine Image)
+
+- **Definition**: A template that contains the software configuration (OS, application server, and applications) required to launch an EC2 instance.
+- **Usage**: Used to create new instances with a pre-defined configuration.
+
+### EC2 - Security Group
+
+- **Definition**: A virtual firewall that controls the traffic to and from your EC2 instances.
+- **Usage**: Defines rules for inbound and outbound traffic, enhancing security by specifying allowed IP ranges and ports.
+
+### EC2 - Key Pair
+
+- **Definition**: A set of security credentials (private key and public key) used to securely connect to an EC2 instance.
+- **Usage**: The public key is stored on the instance, and the private key is kept by the user to establish SSH connections.
+
+### EC2 - User Data
+
+- **Definition**: A script or set of commands that is automatically executed when an EC2 instance is launched.
+- **Usage**: Automates instance configuration tasks, such as installing software or setting environment variables during boot.
