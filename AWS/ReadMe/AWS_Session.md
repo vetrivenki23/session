@@ -20,7 +20,7 @@
 
 #### 8. EC2 - AMI, Security Group, Key & UserDAta
 
-#### 9. Cost Manager - Establish a Zero Budget and Schedule Weekly Reports
+#### 9. ENI (Elastic Network Interface)
 
 #### 10. Launch an EC2 Instance via the Console
 
@@ -156,3 +156,10 @@ IP Range : <https://www.dan.me.uk/ipsubnets?ip=192.168.0.1>
 
 - **Definition**: A script or set of commands that is automatically executed when an EC2 instance is launched.
 - **Usage**: Automates instance configuration tasks, such as installing software or setting environment variables during boot.
+
+---
+
+### EC2 - ENI (Elastic Network Interface)
+
+- **Definition**: A virtual network interface that can be attached to an EC2 instance.
+- **Usage**: Provides a flexible, low-cost way to manage network interfaces and IP addresses for EC2 instances. It can include multiple IP addresses, security groups, and a MAC address.
