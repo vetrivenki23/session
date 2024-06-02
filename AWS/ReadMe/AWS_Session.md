@@ -54,3 +54,35 @@
 - **Usage**: Intended for AWS services, applications, or external users.
 - **Credentials**: Provides temporary security credentials when assumed.
 - **Key Note**: An entity with a set of permissions for AWS services or external users, providing temporary credentials when assumed.
+
+---
+
+### Private vs Public vs Elastic IP
+
+#### Private IP
+
+- **Scope**: Used within private networks; not routable on the internet.
+- **Usage**: Enables communication between devices in the same network.
+- **Examples**: 192.168.x.x, 10.x.x.x, 172.16.x.x to 172.31.x.x.
+
+#### Public IP
+
+- **Scope**: Routable on the internet; used for communication outside the local network.
+- **Usage**: Assigned to devices that need to be accessible over the internet, like web servers and email servers.
+- **Examples**: 8.8.8.8 (Google DNS), 172.217.12.206 (Google).
+
+#### Elastic IP
+
+- **Scope**: A static public IP address provided by cloud service providers, notably AWS.
+- **Usage**: Can be associated with and disassociated from instances dynamically; allows for consistent public IPs despite changing underlying resources.
+- **Examples**: AWS Elastic IP (example format: 54.23.45.67).
+
+### Key Differences
+
+- **Private IP**: Not accessible over the internet, limited to local network communication.
+- **Public IP**: Accessible over the internet, necessary for external communications.
+- **Elastic IP**: A type of static public IP used in cloud environments, can be easily reassigned to different instances.
+
+---
+
+IP Range : <https://www.dan.me.uk/ipsubnets?ip=192.168.0.1>
