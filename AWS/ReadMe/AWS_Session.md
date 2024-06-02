@@ -16,9 +16,9 @@
 
 #### 6. IAM - Users, Group, Policy & Role
 
-#### 7. Set Up AWS CLI
+#### 7. Private vs Public vs Elastic IP
 
-#### 8. Enable MFA (Multi-Factor Authentication)
+#### 8. EC2 - AMI, Security Group, Key & UserDAta
 
 #### 9. Cost Manager - Establish a Zero Budget and Schedule Weekly Reports
 
@@ -47,6 +47,57 @@
 - **Types**: Managed policies (shared) and inline policies (specific).
 - **Format**: Written in JSON, specifying allowed or denied actions.
 - **Key Note**: A JSON document that defines permissions for actions on AWS resources, used to control access.
+
+```markdown
+
+This policy grants read-only access to all objects in the specified S3 bucket.
+
+## Policy JSON
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:GetObject",
+        "s3:ListBucket"
+      ],
+      "Resource": [
+        "arn:aws:s3:::example-bucket",
+        "arn:aws:s3:::example-bucket/*"
+      ]
+    }
+  ]
+}
+```
+
+## Elements Breakdown
+
+- **Version**:
+  - **Description**: Specifies the version of the policy language.
+  - **Value**: `"2012-10-17"` (current version).
+
+- **Statement**:
+  - **Effect**:
+    - **Description**: Defines whether the statement allows or denies the specified actions.
+    - **Value**: `"Allow"` (permits the specified actions).
+
+  - **Action**:
+    - **Description**: Lists the actions that are allowed or denied.
+    - **Values**:
+      - `"s3:GetObject"`: Allows fetching objects from the bucket.
+      - `"s3:ListBucket"`: Allows listing objects within the bucket.
+
+  - **Resource**:
+    - **Description**: Specifies the AWS resources to which the actions apply.
+    - **Values**:
+      - `"arn:aws:s3:::example-bucket"`: The S3 bucket itself.
+      - `"arn:aws:s3:::example-bucket/*"`: All objects within the S3 bucket.
+
+```
+
 
 ### AWS Role
 
