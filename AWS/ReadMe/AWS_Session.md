@@ -14,7 +14,7 @@
 
 ## **Date: June 2, 2024**
 
-#### 6. IAM - Users, Group, Policy & Role
+#### 6. IAM - Users, Group, Policy
 
 #### 7. Private vs Public vs Elastic IP
 
@@ -23,6 +23,23 @@
 #### 9. ENI (Elastic Network Interface)
 
 #### 10. Hibernate in AWS EC2
+
+## **Date: June 9, 2024**
+
+#### 11. Regions , Availability Zones &  Edge Locations
+
+<https://aws.amazon.com/about-aws/global-infrastructure/regions_az/?p=ngi&loc=2>
+
+#### 11. CloudShell
+
+#### 12. IAM - Role
+
+#### 13. IAM - Security Tool - Credntial Report (account-level) & Access Advisor (user-level)
+
+KT Seesion
+43. EC2 Instance Purchasing Options
+44. Spot Instances & Spot Fleet
+45. EC2 Instances Launch Types Hands On
 
 ---
 
