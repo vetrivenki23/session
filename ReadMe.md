@@ -81,3 +81,11 @@ git push -u origin main
 ```bash
 git clone https://github.com/vetrivenki23/session.git
 ```
+
+# Update 400 permission in Windows
+
+```bash
+icacls.exe your_key_name.pem /reset
+icacls.exe your_key_name.pem /grant:r "$($env:username):(r)"
+icacls.exe your_key_name.pem /inheritance:r
+```
