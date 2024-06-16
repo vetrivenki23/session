@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Exit immediately if a command exits with a non-zero status
+set -e
+
 # Prompt for confirmation before deleting .terraform* files and directories
 read -p "Do you want to delete .terraform* files and directories? (y/n): " confirm
 
@@ -22,11 +25,26 @@ read -p "Enter commit description: " description
 git add .
 
 # Pull latest changes from remote repository
-git pull --rebase origin main
+if ! git pull --rebase origin main; then
+    echo "Error: git pull failed. Resolve conflicts and try again."
+    exit 1
+fi
 
 # Commit changes
-git commit -m "$description"
+if ! git commit -m "$description"; then
+    echo "Error: git commit failed."
+    exit 1
+fi
 
 # Set the branch to main and push to the remote repository
-git branch -M main
-git push -u origin main
+if ! git branch -M main; then
+    echo "Error: failed to set branch to main."
+    exit 1
+fi
+
+if ! git push -u origin main; then
+    echo "Error: git push failed."
+    exit 1
+fi
+
+echo "Changes pushed to main branch successfully."
