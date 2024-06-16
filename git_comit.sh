@@ -15,13 +15,18 @@ else
     echo "Deletion of .terraform* files and directories skipped."
 fi
 
-
 # Prompt for commit description
 read -p "Enter commit description: " description
 
 # Git commands
 git add .
+
+# Pull latest changes from remote repository
+git pull --rebase origin main
+
+# Commit changes
 git commit -m "$description"
+
+# Set the branch to main and push to the remote repository
 git branch -M main
 git push -u origin main
-

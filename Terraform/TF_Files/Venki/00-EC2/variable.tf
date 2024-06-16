@@ -5,12 +5,6 @@ variable "aws_region" {
   default     = "us-east-2"
 }
 
-#ami
-variable "ec2_ami" {
-  description = "EC2 ami "
-  type        = string
-  default     = "ami-0db513e73ed5a7faa"
-}
 
 #instance type
 variable "ec2_type" {
@@ -18,4 +12,10 @@ variable "ec2_type" {
   type        = string
   default     = "t2.micro"
 }
+
+#key name
+variable "ec2_keyname" {
+  default = "us-east-2"
+}
+
 
