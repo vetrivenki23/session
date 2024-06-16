@@ -24,15 +24,8 @@ read -p "Enter commit description: " description
 # Git commands
 git add .
 
-# Ensure we are on the main branch
-current_branch=$(git branch --show-current)
-if [ "$current_branch" != "main" ]; then
-    echo "Switching to the main branch."
-    git checkout main
-fi
-
 # Pull latest changes from remote repository
-echo "Pulling latest changes from remote repository."
+# Fetch and rebase the latest changes from the remote 'main' branch
 if ! git pull --rebase origin main; then
     echo "Error: git pull failed. Resolve conflicts and try again."
     exit 1
@@ -44,7 +37,12 @@ if ! git commit -m "$description"; then
     exit 1
 fi
 
-# Push changes to the remote repository
+# Set the branch to main and push to the remote repository
+if ! git branch -M main; then
+    echo "Error: failed to set branch to main."
+    exit 1
+fi
+
 if ! git push -u origin main; then
     echo "Error: git push failed."
     exit 1
