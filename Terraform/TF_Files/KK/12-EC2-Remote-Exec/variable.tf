@@ -15,11 +15,8 @@ variable "ec2_ami" {
 #instance type
 variable "ec2_type" {
   description = "EC2 instance type"
-  type        = map(string)
-  default     = {
-    dev="t2.nano",
-    uat="t2.micro",
-    prod="t2.large"}
+  type        = string
+  default     = "t2.micro"
 }
 
 #key name
