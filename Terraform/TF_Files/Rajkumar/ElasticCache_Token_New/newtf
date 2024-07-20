@@ -2,14 +2,23 @@ provider "aws" {
   region = "us-east-2"
 }
 
-variable "kms_key_arn" {
-  description = "ARN of the existing KMS key"
-  default     = "arn:aws:kms:us-east-2:357674677184:key/36040458-8306-4bc1-9dc7-fa07b74abeae" # Update with your actual KMS key ARN
+variable "kms_key_alias" {
+  description = "Alias name of the existing KMS key"
+  default     = "alias/your-existing-key-alias"  # Update with your actual alias name
+}
+
+resource "aws_kms_key" "secrets_manager_key" {
+  description             = "Customer managed key for Secrets Manager encryption"
+  deletion_window_in_days = 10
+}
+
+data "aws_kms_alias" "secrets_manager_key_alias" {
+  name = var.kms_key_alias
 }
 
 resource "aws_secretsmanager_secret" "elastic_new_auth_key" {
-  name       = "elastic_new_auth_key"
-  kms_key_id = var.kms_key_arn
+  name         = "elastic_new_auth_key"
+  kms_key_id   = data.aws_kms_alias.secrets_manager_key_alias.target_key_id
 }
 
 data "archive_file" "lambda_zip" {
@@ -20,12 +29,11 @@ data "archive_file" "lambda_zip" {
 
 resource "aws_iam_role" "lambda_role" {
   name = "lambda_execution_role"
-
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
     Statement = [{
-      Action = "sts:AssumeRole"
-      Effect = "Allow"
+      Action    = "sts:AssumeRole"
+      Effect    = "Allow"
       Principal = {
         Service = "lambda.amazonaws.com"
       }
@@ -38,8 +46,8 @@ resource "aws_iam_role" "lambda_role" {
       Version = "2012-10-17"
       Statement = [
         {
-          Effect = "Allow"
-          Action = [
+          Effect   = "Allow"
+          Action   = [
             "secretsmanager:PutSecretValue",
             "secretsmanager:GetSecretValue",
             "secretsmanager:UpdateSecret",
@@ -49,15 +57,15 @@ resource "aws_iam_role" "lambda_role" {
           Resource = aws_secretsmanager_secret.elastic_new_auth_key.arn
         },
         {
-          Effect = "Allow"
-          Action = [
+          Effect   = "Allow"
+          Action   = [
             "kms:Encrypt",
             "kms:Decrypt",
             "kms:ReEncrypt*",
             "kms:GenerateDataKey*",
             "kms:DescribeKey"
           ]
-          Resource = var.kms_key_arn
+          Resource = data.aws_kms_alias.secrets_manager_key_alias.target_key_id
         },
         {
           Effect   = "Allow"
